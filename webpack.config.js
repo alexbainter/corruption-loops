@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
@@ -11,8 +13,13 @@ const config = {
     rules: [
       {
         test: [/\.js$/, /\.jsx$/],
-        exclude: /node_modules/,
+        include: /src/,
         use: 'babel-loader',
+      },
+      {
+        test: /\.worker\.js/,
+        include: /src/,
+        use: 'worker-loader',
       },
       // {
       //   test: [/\.css$/, /\.scss$/],
