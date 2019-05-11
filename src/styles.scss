@@ -1,0 +1,50 @@
+html,
+body,
+#root {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+$loopSize: 30em;
+
+.loop {
+  width: $loopSize;
+  height: $loopSize;
+  border: 2px solid black;
+  box-sizing: border-box;
+  animation: 10s infinite looparound linear;
+  //background: coral;
+  clip-path: inset(0 0 calc(#{$loopSize} - 2px) 0);
+}
+
+@keyframes looparound {
+  0% {
+    clip-path: inset(0 0 calc(#{$loopSize} - 2px) 0);
+  }
+
+  25% {
+    clip-path: inset(0 0 0 calc(#{$loopSize} - 2px));
+  }
+
+  50% {
+    clip-path: inset(calc(#{$loopSize} - 2px) 0 0 0);
+  }
+
+  75% {
+    clip-path: inset(0 calc(#{$loopSize} - 2px) 0 0);
+  }
+
+  100% {
+    clip-path: inset(0 0 calc(#{$loopSize} - 2px) 0);
+  }
+}

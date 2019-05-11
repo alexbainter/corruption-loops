@@ -2,6 +2,7 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'development',
@@ -21,22 +22,26 @@ const config = {
         include: /src/,
         use: 'worker-loader',
       },
-      // {
-      //   test: [/\.css$/, /\.scss$/],
-      //   use: [
-      //     MiniCssExtractPlugin.loader,
-      //     'css-loader',
-      //     {
-      //       loader: 'sass-loader',
-      //       options: {
-      //         includePaths: ['./src/styles'],
-      //       },
-      //     },
-      //   ],
-      // },
+      {
+        test: [/\.css$/, /\.scss$/],
+        use: [
+          'style-loader',
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              includePaths: ['./src/styles'],
+            },
+          },
+        ],
+      },
     ],
   },
-  plugins: [new HtmlWebpackPlugin()],
+  plugins: [
+    new HtmlWebpackPlugin({
+      template: path.resolve('./src/index.template.html'),
+    }),
+  ],
 };
 
 module.exports = config;

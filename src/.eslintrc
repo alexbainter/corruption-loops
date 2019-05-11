@@ -5,5 +5,6 @@
   },
   "parserOptions": {
     "sourceType": "module"
-  }
+  },
+  "extends": "plugin:react/recommended"
 }

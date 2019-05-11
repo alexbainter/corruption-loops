@@ -1,8 +1,8 @@
 onmessage = event => {
   const { data } = event;
-
+  const channels = data.length > 2 ? [data] : data;
   postMessage(
-    data.map(channel => {
+    channels.map(channel => {
       channel.forEach((value, i) => {
         if (Math.random() < 0.0000005) {
           const size = Math.ceil(Math.random() * 15000 + 5000);
