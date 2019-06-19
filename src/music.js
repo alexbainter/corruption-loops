@@ -100,7 +100,8 @@ export default () =>
       }, `+${originalBuffer.duration}`);
     };
 
-    iterate();
-
-    Tone.Transport.start();
+    return () => {
+      iterate();
+      Tone.Transport.start();
+    };
   });

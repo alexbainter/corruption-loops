@@ -1,9 +1,15 @@
+$loopSize: 7.5em;
+$contentColor: hsl(0, 0%, 85%);
+$contentHoverColor: hsl(0, 0%, 65%);
+$contentActiveColor: hsl(0, 0%, 45%);
+
 html,
 body,
 #root {
   height: 100%;
   width: 100%;
   margin: 0;
+  background-color: hsl(0, 0%, 10%);
 }
 
 .app {
@@ -11,20 +17,110 @@ body,
   width: 100%;
   margin: 0;
   display: flex;
-  justify-content: center;
   align-items: center;
+  flex-direction: column;
+  color: $contentColor;
+  font-size: 1.5em;
+  position: relative;
 }
 
-$loopSize: 30em;
+.start {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  button {
+    min-width: $loopSize;
+    min-height: $loopSize;
+    border: 2px solid $contentColor;
+    box-sizing: border-box;
+    background: none;
+    color: $contentColor;
+    cursor: pointer;
+    font: inherit;
+    text-decoration: underline;
+
+    &:hover {
+      color: $contentHoverColor;
+      border-color: $contentHoverColor;
+    }
+
+    &:active {
+      color: $contentActiveColor;
+      border-color: $contentActiveColor;
+    }
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
 
 .loop {
-  width: $loopSize;
-  height: $loopSize;
-  border: 2px solid black;
+  min-width: $loopSize;
+  min-height: $loopSize;
+  border: 2px solid $contentColor;
   box-sizing: border-box;
   animation: 10s infinite looparound linear;
   //background: coral;
   clip-path: inset(0 0 calc(#{$loopSize} - 2px) 0);
+}
+
+.copy {
+  padding: 0 2em;
+  max-width: 40em;
+}
+
+.fade-in {
+  transition: opacity 2s;
+  opacity: 0;
+}
+
+.credits {
+  margin: 5em 0;
+  font-size: 0.75em;
+
+  a {
+    color: $contentColor;
+
+    &:hover {
+      color: $contentHoverColor;
+    }
+
+    &:active {
+      color: $contentActiveColor;
+    }
+  }
+
+  button {
+    background: none;
+    border: none;
+    font: inherit;
+    font-size: inherit;
+    color: $contentColor;
+    text-decoration: underline;
+    cursor: pointer;
+    margin: 0;
+    padding: 0;
+
+    &:hover {
+      color: $contentHoverColor;
+    }
+
+    &:active {
+      color: $contentActiveColor;
+    }
+  }
+}
+
+@media (max-width: 700px) {
+  .copy {
+    font-size: 0.75em;
+  }
+
+  .credits {
+    font-size: 0.5em;
+  }
 }
 
 @keyframes looparound {
