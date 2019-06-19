@@ -115,7 +115,8 @@ const App = () => {
       <TimedReveal revealAfter="15000">
         <CorruptedText corruptAfter="25000">
           Recordings are represented digitally as a very long series of numbers,
-          which your device uses to create the sound you hear. This is "data."
+          which your device uses to create the sound you hear. This is
+          &quot;data.&quot;
         </CorruptedText>
       </TimedReveal>
       <TimedReveal revealAfter="25000">
@@ -127,11 +128,18 @@ const App = () => {
       </TimedReveal>
       <TimedReveal revealAfter="35000">
         <CorruptedText corruptAfter="45000">
-          Eventually, none of the original data will remain.
+          This corruption process is different every time, and will never be
+          repeated exactly the same way. This site will never again produce the
+          sound it&apos;s making now.
+        </CorruptedText>
+      </TimedReveal>
+      <TimedReveal revealAfter="45000">
+        <CorruptedText corruptAfter="55000">
+          Eventually, none of the recording&apos;s original data will remain.
         </CorruptedText>
       </TimedReveal>
       <div className="credits copy">
-        <TimedReveal revealAfter="45000">
+        <TimedReveal revealAfter="60000">
           <button type="button">copy link to share</button> | made by{' '}
           <a href="https://alexbainter.com">alex bainter</a>
         </TimedReveal>
