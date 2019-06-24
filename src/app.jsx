@@ -2,6 +2,22 @@ import React, { useEffect, useState, useRef } from 'react';
 import music from './music';
 import './styles.scss';
 
+const execCommandCopy = text => {
+  const textArea = document.createElement('textarea');
+  textArea.value = text;
+  document.body.appendChild(textArea);
+  textArea.focus();
+  textArea.select();
+  document.execCommand('copy');
+  document.body.removeChild(textArea);
+};
+
+const clipboardApiCopy = text => navigator.clipboard.writeText(text);
+
+const copyToClipboard = navigator.clipboard
+  ? clipboardApiCopy
+  : execCommandCopy;
+
 const CorruptedText = ({ children, corruptAfter }) => {
   const [text, setText] = useState(children);
   useEffect(() => {
@@ -140,8 +156,13 @@ const App = () => {
       </TimedReveal>
       <div className="credits copy">
         <TimedReveal revealAfter="60000">
-          <button type="button">copy link to share</button> | made by{' '}
-          <a href="https://alexbainter.com">alex bainter</a>
+          <button
+            type="button"
+            onClick={() => copyToClipboard(window.location.href)}
+          >
+            copy link to share
+          </button>{' '}
+          | made by <a href="https://alexbainter.com">alex bainter</a>
         </TimedReveal>
       </div>
     </div>

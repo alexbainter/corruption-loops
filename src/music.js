@@ -37,6 +37,8 @@ const getSampler = () =>
     }).toMaster();
   });
 
+const NOTES = ['C3', 'G3', 'E3', 'C4', 'G4', 'E4', 'C5'];
+
 const generateBuffer = durationInSeconds => {
   const { sampleRate } = Tone.context;
   const originalContext = Tone.context;
@@ -50,13 +52,9 @@ const generateBuffer = durationInSeconds => {
   );
   Tone.context = offlineContext;
   return getSampler().then(sampler => {
-    sampler.triggerAttack('C3', Math.random() * 5);
-    sampler.triggerAttack('G3', Math.random() * 5);
-    sampler.triggerAttack('E3', Math.random() * 5);
-    sampler.triggerAttack('C4', Math.random() * 5);
-    sampler.triggerAttack('G4', Math.random() * 5);
-    sampler.triggerAttack('E4', Math.random() * 5);
-    sampler.triggerAttack('C5', Math.random() * 5);
+    NOTES.forEach(note => {
+      sampler.triggerAttack(note, Math.random() * 5);
+    });
     const renderPromise = offlineContext.render();
     return renderPromise.then(buffer => {
       sampler.dispose();
