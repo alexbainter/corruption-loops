@@ -159,6 +159,7 @@ const App = () => {
           <button
             type="button"
             onClick={() => copyToClipboard(window.location.href)}
+            title="copy URL to clipboard"
           >
             copy link to share
           </button>{' '}
