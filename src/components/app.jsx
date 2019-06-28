@@ -122,7 +122,7 @@ const App = () => {
       </TimedReveal>
       <TimedReveal revealAfter="45000">
         <CorruptedText corruptAfter="55000">
-          Eventually, none of the recording&apos;s original data will remain.
+          Eventually, none of the original data will remain.
         </CorruptedText>
       </TimedReveal>
       <div className="credits copy">
