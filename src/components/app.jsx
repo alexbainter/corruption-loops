@@ -1,5 +1,7 @@
 import React, { useEffect, useState, useRef } from 'react';
-import music from './music';
+import CorruptedText from './corrupted-text.jsx';
+import TimedReveal from './timed-reveal.jsx';
+import music from '../audio/music';
 import './styles.scss';
 
 const execCommandCopy = text => {
@@ -17,53 +19,6 @@ const clipboardApiCopy = text => navigator.clipboard.writeText(text);
 const copyToClipboard = navigator.clipboard
   ? clipboardApiCopy
   : execCommandCopy;
-
-const CorruptedText = ({ children, corruptAfter }) => {
-  const [text, setText] = useState(children);
-  useEffect(() => {
-    let interval;
-    const timeout = setTimeout(() => {
-      interval = setInterval(() => {
-        setText(oldText =>
-          oldText
-            .split('')
-            .map(char =>
-              Math.random() < 0.0003
-                ? String.fromCharCode(Math.floor(32 + Math.random() * 10144))
-                : char
-            )
-            .join('')
-        );
-      }, Math.random() * 1000 + 1000);
-    }, corruptAfter);
-
-    return () => {
-      clearTimeout(timeout);
-      if (typeof interval !== 'undefined') {
-        clearInterval(interval);
-      }
-    };
-  }, []);
-
-  return <p className="copy">{text}</p>;
-};
-
-const TimedReveal = ({ revealAfter, children }) => {
-  const [isRevealed, setIsRevealed] = useState(false);
-
-  useEffect(() => {
-    const timeout = setTimeout(() => {
-      setIsRevealed(true);
-    }, revealAfter);
-    return () => clearTimeout(timeout);
-  }, [revealAfter]);
-
-  return (
-    <div className="fade-in" style={{ opacity: isRevealed ? 1 : 0 }}>
-      {children}
-    </div>
-  );
-};
 
 const App = () => {
   const [isReady, setIsReady] = useState(false);

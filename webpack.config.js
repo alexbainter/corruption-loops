@@ -35,6 +35,10 @@ const config = {
           },
         ],
       },
+      {
+        test: /\.mp3$/,
+        use: 'file-loader',
+      },
     ],
   },
   plugins: [
