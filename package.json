@@ -25,6 +25,7 @@
     "@babel/preset-react": "^7.0.0",
     "aws-sdk": "^2.484.0",
     "babel-loader": "^8.0.5",
+    "clean-webpack-plugin": "^3.0.0",
     "css-loader": "^2.1.1",
     "eslint": "^5.15.3",
     "eslint-config-metalex9": "^0.3.0",
