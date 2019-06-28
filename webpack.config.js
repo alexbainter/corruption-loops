@@ -40,7 +40,7 @@ const config = {
         ],
       },
       {
-        test: [/\.mp3$/, /\.png$/],
+        test: [/\.mp3$/, /\.png$/, /\.ico$/],
         use: 'file-loader',
       },
     ],

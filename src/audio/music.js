@@ -13,7 +13,7 @@ const getSampler = samplesByNote =>
       .filter(note => {
         const pc = note.charAt(0);
         const oct = note.charAt(note.length - 1);
-        return [3, 4].includes(oct) || (oct === 5 && pc === 'C');
+        return ['3', '4'].includes(oct) || (oct === '5' && pc === 'C');
       })
       .reduce((newSamplesByNote, note) => {
         newSamplesByNote[note] = samplesByNote[note];

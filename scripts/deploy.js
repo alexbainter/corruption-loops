@@ -13,7 +13,7 @@ const DIST_DIR = 'dist';
 const S3_API_VERSION = '2006-03-01';
 const CLOUDFRONT_API_VERSION = '2018-11-05';
 
-const NON_DIST_FILENAMES = ['favicon.ico'];
+const NON_DIST_FILENAMES = [];
 const INVALIDATED_CACHE_FILES = ['/index.html', '/'];
 
 const globPromise = (pattern, opts) =>
