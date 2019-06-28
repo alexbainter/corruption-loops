@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import propTypes from 'prop-types';
-
-const MIN_CHAR_CODE = 32;
-const MAX_CHAR_CODE = 10144;
+import corruptText from '../corrupt-text';
 
 const CorruptedText = ({ children, corruptAfter }) => {
   const [text, setText] = useState(children);
@@ -10,18 +8,7 @@ const CorruptedText = ({ children, corruptAfter }) => {
     let interval;
     const timeout = setTimeout(() => {
       interval = setInterval(() => {
-        setText(oldText =>
-          oldText
-            .split('')
-            .map(char =>
-              Math.random() < 0.0003
-                ? String.fromCharCode(
-                    Math.floor(MIN_CHAR_CODE + Math.random() * MAX_CHAR_CODE)
-                  )
-                : char
-            )
-            .join('')
-        );
+        setText(oldText => corruptText(oldText));
       }, Math.random() * 1000 + 1000);
     }, corruptAfter);
 
