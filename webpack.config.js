@@ -2,11 +2,14 @@
 
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-//const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 const config = {
   mode: 'development',
   devtool: 'sourcemap',
+  output: {
+    filename: '[name].[hash].js',
+  },
   devServer: {
     historyApiFallback: true,
   },
@@ -25,7 +28,7 @@ const config = {
       {
         test: [/\.css$/, /\.scss$/],
         use: [
-          'style-loader',
+          MiniCssExtractPlugin.loader,
           'css-loader',
           {
             loader: 'sass-loader',
@@ -36,7 +39,7 @@ const config = {
         ],
       },
       {
-        test: /\.mp3$/,
+        test: [/\.mp3$/, /\.png$/],
         use: 'file-loader',
       },
     ],
@@ -45,6 +48,7 @@ const config = {
     new HtmlWebpackPlugin({
       template: path.resolve('./src/index.template.html'),
     }),
+    new MiniCssExtractPlugin({ filename: '[name].[hash].css' }),
   ],
 };
 

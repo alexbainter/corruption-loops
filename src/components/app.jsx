@@ -2,6 +2,7 @@ import React, { useEffect, useState, useRef } from 'react';
 import CorruptedText from './corrupted-text.jsx';
 import TimedReveal from './timed-reveal.jsx';
 import music from '../audio/music';
+import corruptText from '../corrupt-text';
 import './styles.scss';
 
 const execCommandCopy = text => {
@@ -35,7 +36,22 @@ const App = () => {
   useEffect(() => {
     if (isPlaying) {
       startMusic.current();
+
+      let interval;
+      const timeout = setTimeout(() => {
+        interval = setInterval(() => {
+          document.title = corruptText(document.title);
+        }, Math.random() * 500 + 500);
+      }, 60000);
+      return () => {
+        clearTimeout(timeout);
+        if (typeof interval !== 'undefined') {
+          clearInterval(interval);
+        }
+      };
     }
+    //eslint-disable-next-line no-empty-function
+    return () => {};
   }, [isPlaying]);
 
   if (!isReady) {
