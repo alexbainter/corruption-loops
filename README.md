@@ -2,7 +2,7 @@
 
 Digitally disintegrating music
 
-Listen at [corruptionloops.alexbainter.com](https://corruptionloops.alexbainter.com).
+Listen at [corruptionloops.alexbainter.com](https://corruptionloops.alexbainter.com). [Read about it](https://medium.com/@metalex9/the-corruption-loops-96abcc0d087c?source=friends_link&sk=55efdb44a11e1dd5a2403c447f0592e7).
 
 ## Overview
 
