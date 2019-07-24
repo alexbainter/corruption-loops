@@ -69,15 +69,12 @@ const music = () =>
     const iterate = () => {
       const buffer = new Tone.Buffer().fromArray(bufferData);
 
-      const bufferSource = new Tone.BufferSource(buffer)
-        .connect(reverb)
-        .set({
-          onended: () => {
-            bufferSource.dispose();
-            buffer.dispose();
-          },
-        })
-        .toMaster();
+      const bufferSource = new Tone.BufferSource(buffer).connect(reverb).set({
+        onended: () => {
+          bufferSource.dispose();
+          buffer.dispose();
+        },
+      });
       bufferSource.start('+1');
 
       corruptionWorker.postMessage(bufferData);
