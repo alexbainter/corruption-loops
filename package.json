@@ -7,7 +7,7 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack-dev-server",
     "build": "webpack-cli --mode production",
-    "deploy": "npm run build && node ./scripts/deploy.js"
+    "deploy": "env SAMPLE_FILE_HOST=//samples.alexbainter.com npm run build && node ./scripts/deploy.js"
   },
   "repository": {
     "type": "git",
@@ -36,7 +36,7 @@
     "mime-types": "^2.1.24",
     "mini-css-extract-plugin": "^0.6.0",
     "node-gzip": "^1.1.2",
-    "node-sass": "^4.12.0",
+    "node-sass": "^4.13.1",
     "prettier": "^1.16.4",
     "prop-types": "^15.7.2",
     "sass-loader": "^7.1.0",
@@ -47,7 +47,7 @@
     "worker-loader": "^2.0.0"
   },
   "dependencies": {
-    "@generative-music/samples.generative.fm": "^1.11.1",
+    "@generative-music/samples-alex-bainter": "^1.0.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "tone": "^13.4.9"

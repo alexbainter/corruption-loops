@@ -1,11 +1,13 @@
 import Tone from 'tone';
-import fetchSpecFile from '@generative-music/samples.generative.fm/browser-client';
+import getSamplesByFormat from '@generative-music/samples-alex-bainter';
 import CorruptionWorker from './corrupt.worker';
 import sampleFormat from './sample-format';
 
 const NOTES = ['C3', 'G3', 'E3', 'C4', 'G4', 'E4', 'C5'];
 
 const corruptionWorker = new CorruptionWorker();
+
+const samplesByFormat = getSamplesByFormat();
 
 const getSampler = samplesByNote =>
   new Promise(resolve => {
@@ -38,8 +40,8 @@ const generateBuffer = durationInSeconds => {
     sampleRate
   );
   Tone.context = offlineContext;
-  return fetchSpecFile().then(({ samples }) =>
-    getSampler(samples['vsco2-piano-mf'][sampleFormat]).then(sampler => {
+  return getSampler(samplesByFormat[sampleFormat]['vsco2-piano-mf']).then(
+    sampler => {
       NOTES.forEach(note => {
         sampler.triggerAttack(note, Math.random() * 5);
       });
@@ -51,7 +53,7 @@ const generateBuffer = durationInSeconds => {
         Tone.context = originalContext;
         return new Tone.Buffer(buffer);
       });
-    })
+    }
   );
 };
 
