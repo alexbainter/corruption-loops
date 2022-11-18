@@ -32,7 +32,7 @@
     "eslint-plugin-react": "^7.12.4",
     "file-loader": "^4.0.0",
     "glob": "^7.1.4",
-    "html-webpack-plugin": "^3.2.0",
+    "html-webpack-plugin": "^5.5.0",
     "mime-types": "^2.1.24",
     "mini-css-extract-plugin": "^0.6.0",
     "node-gzip": "^1.1.2",
